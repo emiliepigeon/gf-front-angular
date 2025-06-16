@@ -1,0 +1,16 @@
+<!--
+    Page de connexion avec un formulaire pour entrer le nom d'utilisateur et le mot de passe.
+    J'utilise les classes CSS définies dans src/styles.css.
+-->
+<div class="main-container">
+    <h2>Connexion</h2>
+    <form class="form-main" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <input class="input-main" type="text" name="username" [(ngModel)]="username" placeholder="Nom d'utilisateur"
+            required />
+        <input class="input-main" type="password" name="password" [(ngModel)]="password" placeholder="Mot de passe"
+            required />
+        <button class="btn-main" type="submit">Se connecter</button>
+    </form>
+    <!-- Bouton pour revenir à l'accueil -->
+    <button class="btn-secondary" routerLink="/">Retour à l’accueil</button>
+</div>
