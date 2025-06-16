@@ -1,143 +1,184 @@
-## Mon premier projet angular 16/06/2025
+## 16/06/2025 
 
-Comme pour la version react de ce matin :
-- New repo github
-- clone
-- nouvelle branche de travail front-angular
+# 📔 Mon Journal de Travail Angular
+*D’abord le front, puis la connexion avec le backend.*
 
-Bien sûr ! Voici un **journal de travail** en mode "je débutante", avec les commandes et des explications simples, pour tout ce que tu viens de faire pour démarrer ton projet Angular à partir d’un dépôt GitHub vide.
+*Voici comment, en tant que débutante, je mettrais en place ce projet Angular étape par étape : une page d’accueil responsive, deux boutons (“Se connecter” et “Créer un compte”), et deux pages/formulaires distincts.*
+---
+
+## 🏁 1. Démarrage du projet
+
+### 🚀 Création et préparation du dépôt GitHub
+
+- J’ai créé un dépôt vide sur GitHub appelé `gf-front-angular`.
+- Je l’ai cloné sur mon ordinateur avec :
+  ```bash
+  git clone https://github.com/mon-utilisateur/gf-front-angular.git
+  cd gf-front-angular
+  ```
+  *(Je remplace `mon-utilisateur` par mon nom GitHub)*
+
+### 🖥️ Ouverture dans VS Code
+
+- J’ouvre mon dossier dans VS Code avec :
+  ```bash
+  code .
+  ```
+
+### ⚡ Installation d’Angular CLI (si besoin)
+
+- J’installe l’outil Angular CLI pour créer et gérer mon projet :
+  ```bash
+  npm install -g @angular/cli
+  ```
 
 ---
 
-# 📔 Journal de travail – Création de mon premier projet Angular
+## 🏗️ 2. Création et organisation du projet Angular
+
+### 🛠️ Création du projet Angular dans un sous-dossier
+
+- Je crée le projet avec le routing intégré :
+  ```bash
+  ng new temp-app --routing --style=css
+  ```
+  *(Je réponds “No” à SSR)*
+
+### 📦 Déplacement des fichiers à la racine
+
+- Je déplace tous les fichiers Angular à la racine de mon dépôt pour que ce soit plus propre :
+  ```powershell
+  Move-Item -Path temp-app\* -Destination . -Force
+  Move-Item -Path temp-app\.* -Destination . -Force
+  Remove-Item -Recurse -Force temp-app
+  ```
+
+### 📥 Installation des dépendances
+
+- J’installe toutes les dépendances du projet :
+  ```bash
+  npm install
+  ```
 
 ---
 
-## 🏁 **Départ : création et clonage du dépôt GitHub**
-
-- **J’ai créé un dépôt vide sur GitHub** appelé `gf-front-angular`.
-- **J’ai cloné ce dépôt sur mon ordinateur** :
-
-```bash
-git clone https://github.com/mon-utilisateur/gf-front-angular.git
-cd gf-front-angular
-```
-*(Je remplace `mon-utilisateur` par mon nom GitHub)*
-
----
-
-## 🖥️ **J’ouvre le dossier dans VS Code**
-
-```bash
-code .
-```
-*(Ça ouvre le dossier dans VS Code)*
-
----
-
-## ⚡ **J’installe Angular CLI (si besoin)**
-
-```bash
-npm install -g @angular/cli
-```
-*(C’est l’outil pour créer et gérer les projets Angular)*
-
----
-
-## 🏗️ **Je crée le projet Angular dans un sous-dossier temporaire**
-
-```bash
-ng new temp-app --routing --style=css
-```
-- J’ai répondu **No** à la question sur SSR.
-- Angular a créé un dossier `temp-app` avec tout le projet dedans.
-
----
-
-## 📦 **Je déplace tous les fichiers Angular à la racine de mon dépôt**
-
-```powershell
-Move-Item -Path temp-app\* -Destination . -Force
-Move-Item -Path temp-app\.* -Destination . -Force
-Remove-Item -Recurse -Force temp-app
-```
-*(Maintenant, tous les fichiers sont bien dans `gf-front-angular/`)*
-
-🚩 Pourquoi déplacer ?
-
-    Bonne pratique : mon dépôt doit contenir directement le code de mon projet, pas un dossier intermédiaire.
-
-    Plus simple pour moi et pour GitHub (et pour déployer plus tard).
-
-
----
-
-## 📁 **Architecture du dossier après déplacement**
+## 📂 3. Architecture de mon projet
 
 ```
 gf-front-angular/
 ├── src/
+│   ├── app/
+│   │   ├── app.component.html
+│   │   ├── app.component.css
+│   │   ├── app.routes.ts
+│   │   └── pages/
+│   │       ├── home/
+│   │       │   ├── home.component.ts
+│   │       │   ├── home.component.html
+│   │       │   └── home.component.css
+│   │       ├── login/
+│   │       │   ├── login.component.ts
+│   │       │   ├── login.component.html
+│   │       │   └── login.component.css
+│   │       └── register/
+│   │           ├── register.component.ts
+│   │           ├── register.component.html
+│   │           └── register.component.css
+├── styles.css
 ├── angular.json
 ├── package.json
 ├── README.md
-└── ... (autres fichiers Angular)
+└── index.html
 ```
-- **Tout le code Angular est à la racine du dépôt** (pas dans un sous-dossier).
 
 ---
 
-## 📥 **J’installe les dépendances**
+### 📄 À quoi servent les fichiers principaux ?
+
+- **`src/index.html`** : Point d’entrée de l’application, contient la balise ``.
+- **`src/styles.css`** : Tout le style global de l’application.
+- **`src/app/app.component.html`** : Le composant principal, contient `` pour afficher la bonne page.
+- **`src/app/app.routes.ts`** : Définit les routes (navigation entre pages).
+- **`src/app/pages/home/login/register`** : Fichiers pour chaque page (accueil, connexion, création de compte).
+
+---
+
+## 🧱 4. Création des pages
+
+### Génération des composants standalone
 
 ```bash
-npm install
+ng generate component pages/home --standalone
+ng generate component pages/login --standalone
+ng generate component pages/register --standalone
 ```
-*(Pour être sûre que tout fonctionne et que les modules sont bien installés)*
+- Je crée chaque page avec la CLI Angular, en mode standalone (Angular 17+).
+
+### J’ajoute le code HTML, TypeScript et CSS pour chaque page en suivant les conseils de l’IA.
 
 ---
 
-## 🚦 **Je lance le serveur Angular**
+## 🌐 5. Lancement du serveur et accès à mon site
+
+### 🚦 Lancer le serveur Angular
 
 ```bash
 ng serve
 ```
-- Je peux voir mon application sur [http://localhost:4200](http://localhost:4200).
+- Je vais sur [http://localhost:4200](http://localhost:4200) pour voir mon application.
 
 ---
 
-## 💾 **Je fais mon premier commit et je pousse sur GitHub**
+## 🐞 6. Problèmes rencontrés et solutions
 
-```bash
-git add .
-git commit -m "Initialisation du projet Angular à la racine"
-git push
-```
-- **Mon projet Angular est maintenant sur GitHub, prêt à être développé !**
+### ❌ Boutons `routerLink` ne fonctionnaient pas
 
----
+- J’ai découvert qu’en Angular 17+ standalone, il faut importer `RouterLink` dans chaque composant qui utilise `routerLink`.
+- J’ai corrigé en ajoutant `imports: [RouterLink]` dans mes fichiers `.ts` de chaque composant concerné.
 
-## 📝 **Résumé de l’architecture de départ**
+### ❌ Formulaires `ngModel`/`ngForm` ne marchaient pas
 
-```
-gf-front-angular/
-├── src/                 # Le code source Angular
-├── angular.json         # Configuration du projet Angular
-├── package.json         # Dépendances et scripts npm
-├── README.md            # Explications du projet
-└── ...                  # Autres fichiers de config
-```
+- J’avais des erreurs comme “No directive found with exportAs 'ngForm'” ou “Can't bind to 'ngModel'”.
+- J’ai appris qu’il faut importer `FormsModule` dans chaque composant standalone qui utilise les formulaires.
+- J’ai ajouté `imports: [FormsModule]` dans mes fichiers `.ts` de login et register.
+
+### ❌ Problème de CSS global
+
+- J’ai essayé d’importer mon CSS global dans chaque composant, mais ça ne marchait pas.
+- J’ai tout mis dans `src/styles.css` et arrêté d’utiliser `@import` dans les fichiers CSS de composants.
 
 ---
 
-## 🎉 **Ce que j’ai appris**
+## 🏗️ 7. Résumé de l’architecture finale
 
-- Cloner un dépôt GitHub vide
-- Installer Angular CLI
-- Créer un projet Angular dans un sous-dossier puis déplacer les fichiers à la racine
-- Installer les dépendances et lancer le serveur Angular
-- Faire un commit et pousser sur GitHub
+- **Tout le style** est dans `src/styles.css` pour plus de simplicité.
+- **Chaque composant standalone** importe ce dont il a besoin (`FormsModule` pour les formulaires, `RouterLink` pour les liens).
+- **Les routes** sont définies dans `app.routes.ts`.
+- **Le composant racine** (`app.component.html`) affiche la bonne page avec ``.
+
+---
+
+## 🥳 8. Ce que j’ai appris
+
+- Créer une application Angular moderne avec plusieurs pages.
+- Comprendre à quoi servent les fichiers principaux.
+- Corriger les erreurs courantes liées aux modules et au routing.
+- Lancer mon application en local et naviguer entre les pages.
 
 ---
 
-*Je suis prête à continuer : je vais maintenant générer mes pages (home, login, register) et commencer à coder mon application !* 🚀
+## 🚦 9. Pour lancer mon site
+
+- Je tape `ng serve` dans le terminal.
+- Je vais sur [http://localhost:4200](http://localhost:4200).
+- Je teste mes boutons et mes formulaires : tout fonctionne !
 
 ---
+
+## 🎉 10. Prochaine étape
+
+- Ajouter d’autres pages, améliorer le style, ou connecter mon site à une vraie base de données plus tard !
+
+---
+
+**Fin de mon journal de travail Angular 😊 étape 1 = 16/05/2025**

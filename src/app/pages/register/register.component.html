@@ -1,0 +1,17 @@
+<!--
+    Page de création de compte avec un formulaire pour nom, email, mot de passe.
+    J'utilise les classes CSS définies dans src/styles.css.
+-->
+<div class="main-container">
+    <h2>Créer un compte</h2>
+    <form class="form-main" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <input class="input-main" type="text" name="username" [(ngModel)]="username" placeholder="Nom d'utilisateur"
+            required />
+        <input class="input-main" type="email" name="email" [(ngModel)]="email" placeholder="Email" required />
+        <input class="input-main" type="password" name="password" [(ngModel)]="password" placeholder="Mot de passe"
+            required />
+        <button class="btn-main" type="submit">Créer un compte</button>
+    </form>
+    <!-- Bouton pour revenir à l'accueil -->
+    <button class="btn-secondary" routerLink="/">Retour à l’accueil</button>
+</div>
