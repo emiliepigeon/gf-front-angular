@@ -1,15 +1,28 @@
 <!--
-    Page de création de compte avec un formulaire pour nom, email, mot de passe.
-    J'utilise les classes CSS définies dans src/styles.css.
+  Ceci est la page de création de compte avec un formulaire sur 2 colonnes.
+  Ligne 1 : nom et prénom
+  Ligne 2 : pseudo et email
+  Ligne 3 : email et mot de passe
+  J'utilise les classes CSS définies dans src/styles.css et dans register.component.css.
 -->
 <div class="main-container">
     <h2>Créer un compte</h2>
-    <form class="form-main" (ngSubmit)="onSubmit()" #registerForm="ngForm">
-        <input class="input-main" type="text" name="username" [(ngModel)]="username" placeholder="Nom d'utilisateur"
-            required />
-        <input class="input-main" type="email" name="email" [(ngModel)]="email" placeholder="Email" required />
-        <input class="input-main" type="password" name="password" [(ngModel)]="password" placeholder="Mot de passe"
-            required />
+    <form class="form-main form-grid" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <!-- Ligne 1 : Nom et Prénom -->
+        <div class="form-row">
+            <input class="input-main" type="text" name="nom" [(ngModel)]="nom" placeholder="Nom" required />
+            <input class="input-main" type="text" name="prenom" [(ngModel)]="prenom" placeholder="Prénom" required />
+        </div>
+        <!-- Ligne 2 : Pseudo et Email -->
+        <div class="form-row">
+            <input class="input-main" type="text" name="username" [(ngModel)]="username" placeholder="Pseudo" required />
+            <input class="input-main" type="email" name="email" [(ngModel)]="email" placeholder="Email" required />
+        </div>
+        <!-- Ligne 3 : Email et Mot de passe -->
+        <div class="form-row">
+            <input class="input-main" type="email" name="email2" placeholder="Confirmer l'email" required />
+            <input class="input-main" type="password" name="password" [(ngModel)]="password" placeholder="Mot de passe" required />
+        </div>
         <button class="btn-main" type="submit">Créer un compte</button>
     </form>
     <!-- Bouton pour revenir à l'accueil -->

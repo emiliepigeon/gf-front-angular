@@ -1,0 +1,31 @@
+<!--
+    Ceci est la page qui affichera la liste des utilisateurs dans un tableau.
+    Plus tard, j'ajouterai les boutons pour le CRUD (Créer, Lire, Modifier, Supprimer).
+    Pour l'instant, j'affiche juste le tableau avec un en-tête.
+-->
+<div class="main-container">
+    <h1>Liste des utilisateurs</h1>
+    <!-- Tableau vide pour l'instant, je mets juste les titres des colonnes -->
+    <table class="table-users">
+        <thead>
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>Matricule</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Actions</th> <!-- Ici j'ajouterai plus tard les boutons CRUD -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Pour l'instant, je n'ai pas d'utilisateurs à afficher -->
+            <tr>
+                <td colspan="6" class="no-users-message">
+                    Aucun utilisateur pour le moment.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Bouton pour revenir à l'accueil -->
+    <button class="btn-secondary" routerLink="/">Retour à l’accueil</button>
+</div>

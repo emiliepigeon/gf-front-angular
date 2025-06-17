@@ -182,3 +182,56 @@ ng serve
 ---
 
 **Fin de mon journal de travail Angular 😊 étape 1 = 16/05/2025**
+
+Pour aujourd'hui : J'essaie de comprendre le fonctionnement pour générer des pages et pouvoir naviger entre elles. J'ai donc créer une nouvelle page utilisateur avec un tableau où lorque je ferai le lien avec mon API REST Spring Boot pour récupérer les données de mes utilisateurs.
+
+Cependant cette page ne devra être visible que lorsqu'un utilisateur sera connecté en fonction des droits qui lui seront accordé (selon leurs rôle l'affichage et l'accès au donné sera différent).
+
+### ❌ Problème
+
+Avec angular : IL NE FAUT PAS mettre de capital dans le nom des images.
+ex: logo.png ou logo-truc-truc.png
+
+Dans le dossier src créer un dossier assets à la racine et mettre son image dedans.
+Dans le html de la page:
+<img src="assets/logo.png" alt="Logo de l'application" width="500" height="50" />
+
+## Penser à modifier dans le angular.json modifier : les assets
+
+EXPLICATION -> angular.json
+Le fichier angular.json est le principal fichier de configuration d’un projet Angular. Il se trouve à la racine du workspace et sert à définir à la fois des paramètres globaux pour tout l’espace de travail et des options spécifiques à chaque application ou bibliothèque du projet.
+
+# Voici ce qu’il contient principalement :
+
+- Les paramètres de build (compilation), tels que les options de compilation, les chemins des fichiers sources, les fichiers de styles et de scripts globaux, etc.
+
+- Le type de projet (application ou bibliothèque) et la liste des projets présents dans le workspace.
+
+- Les chemins de fichiers utilisés par Angular CLI pour générer, construire, tester ou servir l’application.
+
+- Les dépendances et outils supplémentaires à inclure dans le projet.
+
+- Les options de développement, comme le port du serveur de développement ou le type de serveur utilisé.
+
+- Des configurations personnalisées pour les outils CLI (Angular CLI), les schémas de génération de code (schematics), etc.
+
+# La structure générale du fichier comprend notamment :
+
+- La version du fichier de configuration.
+
+- Le chemin où seront créés les nouveaux projets.
+
+- Une section “projects” qui contient la configuration de chaque application ou bibliothèque du workspace.
+
+Ce fichier est donc essentiel pour piloter le comportement, l’environnement et les outils de développement d’un projet Angular moderne
+
+Voici le bout de code que j'ai modifié :
+
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",                             
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],

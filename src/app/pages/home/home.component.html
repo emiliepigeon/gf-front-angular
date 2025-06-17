@@ -1,11 +1,20 @@
 <!--
-    Page d'accueil qui dit bonjour et propose deux boutons pour aller vers connexion ou création de compte.
+    Page d'accueil qui dit bonjour et propose trois boutons pour aller vers connexion, création de compte ou utilisateurs.
+    Le logo PNG s'affiche juste au-dessus du titre.
     Les boutons utilisent routerLink pour naviguer sans recharger la page.
 -->
 <div class="main-container">
+    <!-- Je mets mon logo PNG juste au-dessus du titre.
+            Je précise bien width et height pour contrôler la taille (par exemple 120px) -->
+    <img src="assets/logo.png" alt="Logo de l'application" width="500" height="50" />
+    <!--Autre façon de mettre un img voir fichier ts de la page + ici   <img [src]="cheminImage" alt="Effie Trincket" width="300">-->
     <h1>Bonjour !</h1>
+    <h2>Ceci est une application de gestionnaire de formation</h2>
+    <h3>Pour pouvoir l'utiliser merci de vous connecter ou de créer un compte :</h3>
     <!-- Quand je clique sur ce bouton, je vais sur la page de connexion -->
     <button class="btn-main" routerLink="/login">Se connecter</button>
     <!-- Quand je clique sur ce bouton, je vais sur la page de création de compte -->
     <button class="btn-main" routerLink="/register">Créer un compte</button>
+    <!-- Nouveau bouton pour aller vers la page utilisateurs -->
+    <button class="btn-main" routerLink="/utilisateurs">Voir les utilisateurs</button>
 </div>

@@ -1,1 +1,18 @@
-/* Je laisse vide ou je mets des styles spécifiques si besoin */
+/* Je garde le style global pour .main-container, .btn-main, .btn-secondary, etc. */
+
+/* J'ajoute un style pour afficher les champs du formulaire sur 2 colonnes */
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espace entre les lignes */
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px; /* Espace entre les colonnes */
+}
+
+.form-row input {
+    flex: 1 1 0; /* Les champs prennent la même largeur */
+}

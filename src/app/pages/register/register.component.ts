@@ -14,7 +14,9 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./register.component.css']   // Je dis où est mon CSS
 })
 export class RegisterComponent {
-  // Je crée trois variables pour stocker ce que l'utilisateur tape
+  // Je crée des variables pour stocker ce que l'utilisateur tape
+  nom = '';
+  prenom = '';
   username = '';
   email = '';
   password = '';
@@ -22,6 +24,8 @@ export class RegisterComponent {
   // Cette fonction sera appelée quand l'utilisateur clique sur "Créer un compte"
   onSubmit() {
     // Pour l'instant, je montre juste une alerte avec ce que l'utilisateur a tapé
-    alert(`Création de compte pour ${this.username} / ${this.email}`);
+    alert(
+      `Création de compte pour ${this.nom} ${this.prenom} / ${this.username} / ${this.email}`
+    );
   }
 }
